@@ -1,59 +1,43 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:test_animete/modules/home/home_module.dart';
+
+import 'application/bindings/application_bindings.dart';
+import 'application/storage/locale_select.dart';
+import 'application/ui/test_animate_ui_config.dart';
+import 'l10n/l10n.dart';
+import 'modules/select_locale/select_locale_module.dart';
+import 'modules/splash/splash_module.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: MyApp(),
-    ),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // RemoteConfig.instance.fetchAndActivate();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // print test
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      //alter AppLocalization pt-br
-
-      title: 'Flutter supportedLocales',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text(AppLocalizations.of(context)!.title),
-          ),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              Text(
-                AppLocalizations.of(context)!.helloWord,
-                style: const TextStyle(fontSize: 30),
-              ),
-              Text(
-                AppLocalizations.of(context)!.helloWord,
-                style: const TextStyle(fontSize: 30),
-              ),
-            ],
-          ),
-        ),
-      ),
+    return GetMaterialApp(
+      supportedLocales: L10n.all,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      title: TestAnimeteUiConfig.title,
+      locale: Get.locale,
+      initialBinding: ApplicationBindings(),
+      getPages: [
+        ...SplashModule().routers,
+        ...SelectLocaleModule().routers,
+        ...HomeModule().routers,
+      ],
     );
   }
 }
-
-// ,
-//   "@helloWord": {
-//     "description": "hello, subscribe the deves tecnologia channel"
-//   }

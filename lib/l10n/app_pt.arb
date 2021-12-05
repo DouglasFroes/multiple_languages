@@ -1,7 +1,5 @@
 {
-  "helloWord":"Ola Mundo!",
-  "title":"App em pt-br",
-  "@helloWord":{
-    "description": "Ola, teste de tradução"
-  }
+  "language": "Portugues",
+  "helloWord": "Olá Mundo"
 }
+

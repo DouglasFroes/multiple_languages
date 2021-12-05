@@ -1,7 +1,7 @@
 {
-  "helloWord": "hello Word!",
-  "title": "app en-US",
-  "@helloWord": {
-    "description": "hello, test of translation"
- }
+  "language": "English",
+  "@language": {
+    "description": "English language"
+  },
+  "helloWord": "Hello World"
 }
