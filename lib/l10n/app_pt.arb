@@ -1,5 +1,7 @@
 {
   "language": "Portugues",
-  "helloWord": "Olá Mundo"
+  "helloWord": "Olá Mundo",
+  "homeDescription": "toque para explorar",
+  "menu":"Cardápio",
+  "menuSubtitle":"Escolha um dos nossos pratos"
 }
-

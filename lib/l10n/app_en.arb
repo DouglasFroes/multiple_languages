@@ -3,5 +3,8 @@
   "@language": {
     "description": "English language"
   },
-  "helloWord": "Hello World"
-}
+  "helloWord": "Hello World",
+  "homeDescription": "touch to explore",
+  "menu": "Menu",
+  "menuSubtitle": "Close on of our dishes"
+  }

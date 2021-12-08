@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:test_animete/modules/home/home_module.dart';
+import 'package:test_animete/modules/menu/menu_module.dart';
 
 import 'application/bindings/application_bindings.dart';
-import 'application/storage/locale_select.dart';
 import 'application/ui/test_animate_ui_config.dart';
 import 'l10n/l10n.dart';
 import 'modules/select_locale/select_locale_module.dart';
@@ -13,8 +13,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // RemoteConfig.instance.fetchAndActivate();
-
   runApp(const MyApp());
 }
 
@@ -37,6 +35,7 @@ class MyApp extends StatelessWidget {
         ...SplashModule().routers,
         ...SelectLocaleModule().routers,
         ...HomeModule().routers,
+        ...MenuModule().routers,
       ],
     );
   }

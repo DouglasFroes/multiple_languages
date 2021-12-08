@@ -1,4 +1,7 @@
 {
   "language": "Español",
-  "helloWord": "Hola Mundo"
+  "helloWord": "Hola Mundo",
+  "homeDescription": "tocar para explorar",
+  "menu": "Menú",
+  "menuSubtitle": "Elige uno de nuestros platos"
 }

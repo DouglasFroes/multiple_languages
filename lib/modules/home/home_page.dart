@@ -9,16 +9,37 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.language),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(AppLocalizations.of(context)!.language),
-            Text(Get.locale.toString())
-          ],
+      body: Container(
+        width: Get.width,
+        height: Get.height,
+        alignment: Alignment.bottomCenter,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/back.png'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: InkWell(
+          onTap: () {
+            Get.toNamed('/menu');
+          },
+          child: Container(
+            // margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(5),
+            height: Get.height * 0.10,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.white30,
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Text(
+              AppLocalizations.of(context)!.homeDescription,
+              style: const TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

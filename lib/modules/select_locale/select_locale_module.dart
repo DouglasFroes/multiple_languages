@@ -8,7 +8,7 @@ class SelectLocaleModule implements Module {
   List<GetPage> routers = [
     GetPage(
       name: '/select_locale',
-      page: () => SelectLocalePage(),
+      page: () => const SelectLocalePage(),
       binding: SelectLocaleBindings(),
     )
   ];
