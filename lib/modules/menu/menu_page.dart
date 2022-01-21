@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:test_animete/modules/menu/menu_controller.dart';
 import 'package:test_animete/modules/menu/widget/category.dart';
+import 'package:test_animete/modules/menu/widget/item.dart';
 import 'package:test_animete/services/theme_services.dart';
 
 class MenuPage extends GetView<MenuController> {
@@ -47,69 +48,32 @@ class MenuPage extends GetView<MenuController> {
         ),
         child: Column(
           children: [
-            Expanded(
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Row(
-                    children: const [
-                      Category(),
-                      Category(),
-                      Category(),
-                      Category(),
-                      Category(),
-                      Category(),
-                    ],
-                  ),
-                ],
+            SizedBox(
+              height: Get.height * 0.1,
+              child: Expanded(
+                child: ListView.builder(
+                  itemCount: 20,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (_, index) => Category(idNumber: index),
+                ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
             Expanded(
-              child: ListView(
-                children: [
-                  Column(
-                    // duas colunas
-                    children: [
-                      Row(
-                        children: const [
-                          Category(),
-                          Category(),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Category(),
-                          Category(),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Category(),
-                          Category(),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Category(),
-                          Category(),
-                        ],
-                      ),
-                      Row(
-                        children: const [
-                          Category(),
-                          Category(),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              child: Obx(() {
+                return ListView.builder(
+                  itemCount: controller.counter,
+                  itemBuilder: (_, index) => Item(idNumber: index),
+                );
+              }),
             ),
           ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: Get.height * 0.1,
           width: Get.width,
           child: Row(
@@ -119,13 +83,13 @@ class MenuPage extends GetView<MenuController> {
                 onTap: () {
                   ThemeService().setTheme("redTheme");
                 },
-                child: Text('Theme red'),
+                child: const Text('Theme red'),
               ),
               InkWell(
                 onTap: () {
                   ThemeService().setTheme("purpleTheme");
                 },
-                child: Text('Theme purple'),
+                child: const Text('Theme purple'),
               ),
             ],
           ),

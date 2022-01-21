@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Category extends StatelessWidget {
-  const Category({Key? key}) : super(key: key);
+import '../menu_controller.dart';
+
+class Category extends GetView<MenuController> {
+  final int _idNumber;
+
+  const Category({Key? key, required int idNumber})
+      : _idNumber = idNumber,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // ignore: avoid_print
-        print('Category Tapped');
-        Get.toNamed('/details');
+        // controller.setCounter(_idNumber);
+        controller.setCounter(_idNumber);
       },
       child: Container(
         margin: const EdgeInsets.all(5),
@@ -24,14 +29,14 @@ class Category extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const [
-            Icon(
+          children: [
+            const Icon(
               Icons.fastfood,
               size: 35,
             ),
             Text(
-              'test',
-              style: TextStyle(
+              'test $_idNumber',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),

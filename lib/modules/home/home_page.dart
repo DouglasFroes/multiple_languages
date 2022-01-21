@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:test_animete/modules/home/home_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
