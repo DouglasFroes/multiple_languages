@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:test_animete/modules/menu/menu_controller.dart';
 import 'package:test_animete/modules/menu/widget/category.dart';
+import 'package:test_animete/services/theme_services.dart';
 
 class MenuPage extends GetView<MenuController> {
   const MenuPage({Key? key}) : super(key: key);
@@ -11,54 +12,125 @@ class MenuPage extends GetView<MenuController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: SizedBox(
-            width: Get.width,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.menu,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                Text(
-                  AppLocalizations.of(context)!.menuSubtitle,
-                  style: const TextStyle(
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w700,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          backgroundColor: Colors.white,
-        ),
-        body: Container(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: SizedBox(
           width: Get.width,
-          height: Get.height,
-          alignment: Alignment.bottomCenter,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: const [
-                  Category(),
-                  Category(),
-                  Category(),
-                  Category(),
-                ],
+              Text(
+                AppLocalizations.of(context)!.menu,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
-              Column(),
+              Text(
+                AppLocalizations.of(context)!.menuSubtitle,
+                style: const TextStyle(
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12,
+                ),
+              ),
             ],
           ),
-        ));
+        ),
+      ),
+      body: Container(
+        width: Get.width,
+        height: Get.height,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Row(
+                    children: const [
+                      Category(),
+                      Category(),
+                      Category(),
+                      Category(),
+                      Category(),
+                      Category(),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  Column(
+                    // duas colunas
+                    children: [
+                      Row(
+                        children: const [
+                          Category(),
+                          Category(),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          Category(),
+                          Category(),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          Category(),
+                          Category(),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          Category(),
+                          Category(),
+                        ],
+                      ),
+                      Row(
+                        children: const [
+                          Category(),
+                          Category(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: Get.height * 0.1,
+          width: Get.width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              InkWell(
+                onTap: () {
+                  ThemeService().setTheme("redTheme");
+                },
+                child: Text('Theme red'),
+              ),
+              InkWell(
+                onTap: () {
+                  ThemeService().setTheme("purpleTheme");
+                },
+                child: Text('Theme purple'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

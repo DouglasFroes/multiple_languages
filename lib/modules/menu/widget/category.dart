@@ -10,6 +10,7 @@ class Category extends StatelessWidget {
       onTap: () {
         // ignore: avoid_print
         print('Category Tapped');
+        Get.toNamed('/details');
       },
       child: Container(
         margin: const EdgeInsets.all(5),
